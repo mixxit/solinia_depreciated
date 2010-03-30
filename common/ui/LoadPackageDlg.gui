@@ -1,0 +1,290 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(LoadPackageDlg) {
+   Profile = "GuiDialogProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   Position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 8";
+   Visible = "1";
+      fitParentHeight = "0";
+      fitParentWidth = "0";
+      helpTag = "0";
+
+   new GuiWindowCtrl() {
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      Position = "36 33";
+      Extent = "589 372";
+      MinExtent = "8 8";
+      Visible = "1";
+      text = "Open Package...";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "1";
+      canMaximize = "1";
+      MinSize = "50 50";
+      closeCommand = "Canvas.popDialog(LoadPackageDlg);";
+         fitParentHeight = "0";
+         fitParentWidth = "0";
+         helpTag = "0";
+
+      new GuiButtonCtrl() {
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         Position = "449 343";
+         Extent = "60 20";
+         MinExtent = "8 8";
+         Visible = "1";
+         Command = "DoOpenPackageExCallback();";
+         text = "Load";
+         groupNum = "-1";
+         buttonType = "PushButton";
+            fitParentHeight = "0";
+            fitParentWidth = "0";
+            helpTag = "0";
+      };
+      new GuiButtonCtrl() {
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         Position = "519 343";
+         Extent = "60 20";
+         MinExtent = "8 8";
+         Visible = "1";
+         Command = "Canvas.popDialog(LoadPackageDlg);";
+         text = "Cancel";
+         groupNum = "-1";
+         buttonType = "PushButton";
+            fitParentHeight = "0";
+            fitParentWidth = "0";
+            helpTag = "0";
+      };
+      new GuiFrameSetCtrl() {
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "4 24";
+         Extent = "579 310";
+         MinExtent = "8 2";
+         Visible = "1";
+         columns = "0 245";
+         rows = "0";
+         borderWidth = "7";
+         borderColor = "206 206 206 206";
+         borderEnable = "dynamic";
+         borderMovable = "dynamic";
+         autoBalance = "0";
+         fudgeFactor = "0";
+
+         new GuiScrollCtrl() {
+            Profile = "GuiScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "0 0";
+            Extent = "238 310";
+            MinExtent = "8 2";
+            Visible = "1";
+            willFirstRespond = "1";
+            hScrollBar = "dynamic";
+            vScrollBar = "dynamic";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+               fitParentHeight = "1";
+               fitParentWidth = "0";
+
+            new GuiDirectoryTreeCtrl(LoadDirPakTreeEx) {
+               Profile = "GuiDirectoryTreeProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               Position = "2 2";
+               Extent = "85 63";
+               MinExtent = "8 2";
+               Visible = "1";
+               tabSize = "16";
+               textOffset = "2";
+               fullRowSelect = "0";
+               itemHeight = "21";
+               destroyTreeOnSleep = "0";
+               MouseDragging = "0";
+               MultipleSelections = "0";
+                  fitParentHeight = "0";
+                  fitParentWidth = "0";
+            };
+         };
+         new GuiScrollCtrl() {
+            Profile = "GuiScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "245 0";
+            Extent = "334 310";
+            MinExtent = "8 2";
+            Visible = "1";
+            willFirstRespond = "1";
+            hScrollBar = "alwaysOn";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+               fitParentHeight = "1";
+               fitParentWidth = "1";
+
+            new GuiDirectoryFileListCtrl(LoadPackageListEx) {
+               Profile = "GuiDirectoryFileListProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               Position = "2 2";
+               Extent = "623 208";
+               MinExtent = "8 2";
+               Visible = "1";
+               enumerate = "0";
+               resizeCell = "1";
+               columns = "0";
+               fitParentWidth = "1";
+               clipColumnText = "0";
+                  fitParentHeight = "0";
+            };
+         };
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
+
+//------------------------------------------------------------------------------
+// ex: getLoadPackagename("~/stuff/*.*", openStuff);
+//     -- calls 'openStuff(%filename)' on dblclick or ok
+//------------------------------------------------------------------------------
+function getLoadPackagename(%filespec, %callback, %currentFile)
+{
+  $GuiLoadDialogCallback = %callback;   
+  if( %filespec $= "" )
+   $LoadPackageExFileSpec = "*.*";
+  else
+   $LoadPackageExFileSpec = %filespec;
+
+  Canvas.pushDialog(LoadPackageDlg, 99);
+
+  $LoadPackageExFile = %currentFile;
+
+   // If we have a current path, set the tree to it
+   if( filePath( %currentFile ) !$= "" )
+      LoadDirPakTreeEx.setSelectedPath( filePath( %currentFile ) );
+      
+   // Update our file view to reflect the changes
+   LoadPackageListEx.setPath( LoadDirPakTreeEx.getSelectedPath(), $LoadPackageExFileSpec );
+}
+
+
+//--------------------------------------
+function DoOpenPackageExCallback()
+{
+  %path = LoadDirPakTreeEx.getSelectedPath();
+  %file = LoadPackageListEx.getSelectedFile();
+  %cat = %path @ "/" @ %file;
+  
+  // MEOW
+  eval( $GuiLoadDialogCallback @ "(\"" @ %cat @"\");" );
+
+  Canvas.popDialog(LoadPackageDlg);
+}   
+
+function LoadDirPakTreeEx::onSelectPath( %this, %path )
+{
+   // Update our file view to reflect the changes
+   LoadPackageListEx.setPath( %path, $LoadPackageExFileSpec  );
+}
+
+//////////////////////////////
+// NOTE # 5
+//////////////////////////////
+//------------------------------------------------------------------------------
+// This was causing a funky bug that loaded the package twice
+// Feel free to resolve error if you want double clicking to load
+// objects
+// - MP
+//------------------------------------------------------------------------------
+//function LoadPackageListEx::onDoubleClick(%this)
+//{
+   // Calls EditorLoadPackage() twice for some reason
+   //DoOpenPackageExCallback();   
+//}
+
+// Called from WorldEditor system
+function EditorLoadPackage()
+{
+   getLoadPackagename("*.pak", "EditorDoLoadPackage");
+}
+
+//------------------------------------------------------------------------------
+// This is the actual load function, the potatoes of this resource
+// - MP
+//------------------------------------------------------------------------------
+//////////////////////////////
+// NOTE # 2
+//////////////////////////////
+function EditorDoLoadPackage(%file)
+{
+   echo("Loading package: " @ %file);
+   
+   // Open our .pak file for reading
+   %pakFile = new FileObject();
+   %pakFile.openForRead(%file);
+   
+   // Parse through the entire file
+   //
+   // Look for a Sun and Sky object
+   //
+   // If the objects are found, delete the
+   // current Sky and Sun 
+   while(!%pakFile.isEOF())
+   {
+      // Get a line
+      %line = %pakFile.readLine();
+      
+      //////////////////////////////
+      // NOTE # 3
+      //////////////////////////////
+      // Very dangerous way of determing if a Sky exists
+      // in .pak file
+      if(%line $= "   new Sky(Sky) {")
+      {
+         // Delete current sky if we are loading another
+         Sky.delete();
+      }
+      
+      // Very dangerous way of determing if a Sun exists
+      // in .pak file   
+      if(%line $= "   new Sun() {")
+      {
+         // Delete current Sun if we are loading another
+         %sun = MissionGroup.getObjects("Sun");
+         %sun.delete();
+      }
+   }
+   
+   // Finished parsing file, so close it out
+   %pakFile.close();
+   %pakFile.delete();
+   
+   // Load the package
+   exec(%file);
+   
+   //////////////////////////////
+   // NOTE # 4
+   //////////////////////////////
+   
+   // lightScene doesn't work, have to manually activate scene relight from WorldEditor
+   //lightScene("", forceAlways);
+   
+   // Foliage and shape replication does not start unless user clicks on
+   // objects in World Editor
+   //
+   // So, try and force the replication. *Note*- Does not work =(
+   //StartClientReplication();
+   //StartFoliageReplication();
+}

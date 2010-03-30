@@ -1,0 +1,243 @@
+List of files changed with each version to help comparing from previous versions.
+
+Version 1.3 SP2 to Version 1.3 SP3:
+Files Changed:
+-pytge.pyd
+
+Floating Text:
+-mud\simulation\simmind.py
+-mud\world\combat.py
+-mud\world\damage.py
+
+-testgame.mmo\server\scripts\game.cs
+-testgame.mmo\client\scripts\client.cs
+-starter.mmo\server\scripts\game.cs
+-starter.mmo\client\scripts\client.cs
+
+-startergame.mmo\momGameProfiles.cs
+-testgame.mmo\momGameProfiles.cs
+-testgame.mmo\client\scripts\optiondlg.cs
+-starter.mmo\client\scripts\optiondlg.cs
+-starter.mmo\optiondlg.gui
+-testgame.mmo\optiondlg.gui
+-starter.mmo\playergui.gui
+-testgame.mmo\playergui.gui
+-starter.mmo\client\default.cs
+-testgame.mmo\client\default.cs
+
+Loot Window:
+-mud\client\gui\itemInfoWnd.py - new loot window
+-mud\client\gui\lootWnd.py - new loot window
+-starter.mmo\client\ui\LootWnd.gui - new loot window
+-testgame.mmo\client\ui\LootWnd.gui - new loot window
+
+Xerves Long range followRange fix:
+-mud\world\mob.py
+-mud\world\damage.py
+-mud\world\tactical.py
+
+Selectrons:
+-mud\client\playermind.py
+-mud\world\mob.py
+-testgame.mmo\client\scripts\playGui.cs
+-starter.mmo\client\scripts\playGui.cs 
+-testgame.mmo\datablocks\spells\init.cs
+-testgame.mmo\datablocks\spells\selectrons.cs
+-starter.mmo\datablocks\spells\init.cs
+-starter.mmo\datablocks\spells\selectrons.cs
+-testgame\data\spells\SELE
+-startgergame\data\spells\SELE
+testgame\client\scripts\optiondlg.cs
+startger.mmo\client\scripts\optiondlg.cs
+starter.mmo\optiondlg.gui and .dso
+testgame.mmo\optiondlg.gui and .dso
+starter.mmo\client\default.cs
+testgame.mmo\client\default.cs
+
+Animation Synch and Fast Combat patch:
+-mud\world\combat.py
+-mud\world\mob.py
+-mud\simmulation\simobject.py
+
+Harvesting models
+-models\harvesting\*
+-textures\havesting\*
+-genesis\spawn\npc.py
+-genesis\zone\base\spawngroups.py
+-missions\base.mis
+
+GM and IMM in Gamesettings.py
+-mud\gamesettings.py
+-mud\characterserver\server.py
+
+
+Auction system
+-Install:  http://pypi.python.org/packages/2.5/p/pylzma/pylzma-0.3.0.win32-py2.5.exe#md5=bc1c3d4a402984056acf85a251ba347c
+-tools\database reset scripts\createAuctionMailDBs.bat
+-c:\tmmokit\data\ahserver\*
+testgame.mmo/data/missions/base.mis
+testgame.mmo/client/init.cs
+testgame.mmo/client/ui/momGameProfiles.cs
+testgame.mmo/client/ui/AuctionGui.gui
+testgame.mmo/client/ui/MailInfoGui.gui
+testgame.mmo/client/ui/MailGui.gui
+mud/ahserver/mailserver.py
+mud/ahserver/upgradedb.py
+mud/ahserver/ahserver.py
+mud/gamesettings.py
+mud/world/core.py
+mud/world/spawn.py
+mud/world/playeravatar.py
+mud/world/player.py
+mud/world/dialog.py
+mud/world/defines.py
+mud/world/command.py
+mud/world/shared/playdata.py
+mud/world/theworld.py
+mud/world/character.py
+mud/world/item.py
+mud/world/itemvariants.py
+mud/client/gui/__init__.py
+mud/client/gui/mailInfoGui.py
+mud/client/gui/mailGui.py
+mud/client/gui/auctionGui.py
+mud/client/gui/partyWnd.py
+mud/client/gui/itemInfoWnd.py
+mud/client/playermind.py
+mud/worldserver/main.py
+startup.bat
+upgrade.bat
+startergame.mmo/genesis/dbdict.py
+testgame.mmo/genesis/dbdict.py
+testgame.mmo/genesis/item/startinggear.py
+testgame.mmo/genesis/zone/base/spawngroups.py
+testgame.mmo/genesis/zone/base/quests.py
+testgame.mmo/data/shapes/mailbox/*
+testgame.mmo/data/ui/elements/auctioncoins.png
+testgame.mmo/data/ui/elements/auctionitem.png
+testgame.mmo/data/ui/elements/auctionitem_mine.png
+testgame.mmo/data/ui/elements/auctionitem_winbid.png
+testgame.mmo/data/ui/elements/coinpile.png
+testgame.mmo/data/ui/elements/mail.png
+testgame.mmo/data/ui/elements/parchline.png
+testgame.mmo/data/ui/elements/parchpage.png
+testgame.mmo/data/ui/elements/parchment.png
+
+
+
+Version 1.3 SP1 Hotfix 2 to Version 1.3 SP2:
+-packaging\buildistro.py
+-projects\testgame.agp
+-mud\client\gui\advancePane.py
+-mud\simulation\simmind.py
+-mud\simulation\simobject.py
+-mud\world\archetype.py
+-mud\world\character.py
+-mud\world\cserveravatar.py
+-mud\world\defines.py
+-mud\world\effect.py
+-mud\world\item.py
+-mud\world\loot.py
+-mud\world\mob.py
+-mud\world\mobvarients.py
+-mud\world\newplayeravatar.py
+-mud\world\spawn.py
+-mud\world\theworld.py
+-mud\world\worldupdate.py
+-mud\world\zone.py
+-mud\world\shared\worlddata.py
+-mud\worldserver\embedded.py
+-common\editor\EditorGui.cs
+-mmoide\tool\ZoneService.py
+-mmoide\tool\data\splash.jpg
+-zoneserver.py
+-starter.mmo\genesis\dbdict.py
+-starter.mmo\genesis\skill\general.py
+-testgame.mmo\data\missions\base.mis
+-testgame.mmo\data\missions\base.ter
+-testgame.mmo\data\worlds\multiplayer.baseline\world.db
+-testgame.mmo\genesis\dbdict.py
+-testgame.mmo\genesis\item\items.py
+-testgame.mmo\genesis\skill\general.py
+-testgame.mmo\genesis\spawn\animal.py
+-testgame.mmo\genesis\spawn\critters.py
+-testgame.mmo\genesis\spawn\npc.py
+-testgame.mmo\genesis\world\world.py
+-testgame.mmo\genesis\vendor\weaponvendor.py
+-testgame.mmo\genesis\zone\base\spawngroups.py
+-testgame.mmo\genesis\zone\landone\landone.py
+-testgame.mmo\genesis\zone\landtwo\landtwo.py
+
+
+Version 1.3 SP1 to Version 1.3 SP1 Hotfix 2:
+-remove .svn files from Shaders directory
+-removed .svn files from starter.mmo\client\ui
+-removed .svn files from testgame.mmo\client\ui
+-Modified publishpatch.bat to include Shaders directory
+
+Version 1.3 SP1 to Version 1.3 SP1 Hotfix 1:
+-new pytge.pyd
+-new pytge.so
+-added msvcr80.dll
+
+Version 1.3 to Version 1.3 SP1:
+Files modified:
+-mud\gamesettings.py
+-mud\characterserver\restorecharacter.py
+-mud\characterserver\server.py
+-mud\gmserver\gmserver.py
+-mud\masterserver\main.py
+-mud\masterserver\newplayeremail.py
+-mud\server\config.py
+-mud\world\theworld.py
+-mud\worlddaemon\main.py
+-mud\worlddaemon\worldimp.py
+-mud\worlddaemon\worldservices.py
+-mud\worldmanager\worldmanager.py
+-mud\worldserver\main.py
+-packaging\touchmanifests.py
+-packaging\client2exe.py
+
+Removed changes.txt.  All info is in patchlist.txt
+
+Version 1.2 to Version 1.3:
+Files modified:
+-mud\characterserver\gui.py
+-mud\client\gui\helWnd.py
+-mud\client\gui\patcherGui.py
+-mud\client\gui\worldGui.py
+-mud\gmserver\gmserver.py
+-mud\gmserver\userpasswords.py
+-mud\gmtool\gmmind.py
+-mud\gmtool\gmtool.py
+-mud\masterserver\gui.py
+-mud\masterserver\main.py
+-mud\masterserver\newplayeremail.py
+-mud\world\core.py
+-mud\world\crafting.py
+-mud\world\genesistime.py
+-mud\world\guardiancommand.py
+-mud\world\immortalcommand.py
+-mud\world\theworld.py
+-mud\world\zone.py
+-mud\worlddaemon\gmservices.py
+-mud\worlddaemon\gui.py
+-mud\worlddaemon\worldimp.py
+-mud\worlddaemon\worldservices.py
+-mud\worldmanager\worldmanager.py
+-packaging\gmtool2app.py
+-packaging\nsis\license.txt
+-packaging\packagemaker\license.rtf
+-packaging\packagemaker\readme.rtf
+-starter.mmo\client\ui\mom_menu_background.jpg
+-starter.mmo\client\ui\mom_menu_background_demo.jpg
+-starter.mmo\client\ui\mom_menu_background_test.jpg
+-testgame.mmo\client\ui\mom_menu_background.jpg
+-testgame.mmo\client\ui\mom_menu_background_demo.jpg
+-testgame.mmo\client\ui\mom_menu_background_test.jpg
+-projects\testgame.agp
+
+Folders Removed:
+-tools
+-common/editor/heightScripts
+-

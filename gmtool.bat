@@ -1,0 +1,1 @@
+start "%CD%" start /b .\mud\gmtool\gmtool.py

@@ -1,0 +1,1 @@
+Script will wipe out all data and recreate databases.  Drag .bat file to the c:\tmmokit directory and run.

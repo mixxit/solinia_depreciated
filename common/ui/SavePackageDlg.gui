@@ -1,0 +1,495 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(SavePackageDlgEx) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDialogProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "1024 768";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl() {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "178 251";
+      Extent = "653 443";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Save Package...";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "1";
+      canMaximize = "1";
+      minSize = "50 50";
+      closeCommand = "Canvas.popDialog(SavePackageDlgEx);";
+
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         position = "513 414";
+         Extent = "60 20";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "DoSavePackageExCallback();";
+         hovertime = "1000";
+         text = "Save";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         position = "583 414";
+         Extent = "60 20";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "Canvas.popDialog(SavePackageDlgEx);";
+         hovertime = "1000";
+         text = "Cancel";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "10 414";
+         Extent = "48 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "File name:";
+         maxLength = "255";
+      };
+      new GuiTextEditCtrl(SavePackageExEdit) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "60 414";
+         Extent = "286 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "255";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
+      };
+      new GuiFrameSetCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         position = "4 125";
+         Extent = "643 280";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         columns = "0 325";
+         rows = "0";
+         borderWidth = "7";
+         borderColor = "206 206 206 206";
+         borderEnable = "dynamic";
+         borderMovable = "dynamic";
+         autoBalance = "0";
+         fudgeFactor = "0";
+
+         new GuiScrollCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "0 0";
+            Extent = "318 280";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            willFirstRespond = "1";
+            hScrollBar = "dynamic";
+            vScrollBar = "dynamic";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+
+            new GuiDirectoryTreeCtrl(SavePakDirTreeEx) {
+               canSaveDynamicFields = "0";
+               Profile = "GuiDirectoryTreeProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "2 2";
+               Extent = "106 63";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               tabSize = "16";
+               textOffset = "2";
+               fullRowSelect = "0";
+               itemHeight = "21";
+               destroyTreeOnSleep = "0";
+               MouseDragging = "0";
+               MultipleSelections = "0";
+               DeleteObjectAllowed = "1";
+               DragToItemAllowed = "1";
+            };
+         };
+         new GuiScrollCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "325 0";
+            Extent = "318 280";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            willFirstRespond = "1";
+            hScrollBar = "alwaysOn";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+
+            new GuiDirectoryFileListCtrl(SavePackageListEx) {
+               canSaveDynamicFields = "0";
+               Profile = "GuiDirectoryFileListProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "2 2";
+               Extent = "296 288";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               AllowMultipleSelections = "1";
+               fitParentWidth = "1";
+            };
+         };
+      };
+      new GuiCheckBoxCtrl(SaveSunCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "40 36";
+         Extent = "44 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Sun";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SaveSkyCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "40 66";
+         Extent = "44 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Sky";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SavePrecipCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "40 96";
+         Extent = "82 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Precipitation";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SaveForestCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "160 36";
+         Extent = "61 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Forests";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SaveFoliageCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "160 66";
+         Extent = "61 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Foliage";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SaveShapesCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "160 96";
+         Extent = "110 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Shape Replicators";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiCheckBoxCtrl(SaveAudiosCB) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "290 36";
+         Extent = "95 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Audio Emitters";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiTextCtrl(ErrorMessage) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "500 43";
+         Extent = "8 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "0";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
+
+//------------------------------------------------------------------------------
+// ex: getSavePackagenameEx("~/stuff/*.*", saveStuff);
+//     -- calls 'saveStuff(%filename)' on ok
+//------------------------------------------------------------------------------
+function getSavePackagename(%filespec, %callback, %currentFile)
+{
+  $GuiSaveDialogCallback = %callback;   
+  if( %filespec $= "" )
+   $SavePackageExFileSpec = "*.*";
+  else
+   $SavePackageExFileSpec = %filespec;
+
+  Canvas.pushDialog(SavePackageDlgEx, 99);
+
+  $SavePackageExFile = %currentFile;
+
+   // If we have a current path, set the tree to it
+   if( filePath( %currentFile ) !$= "" )
+      SavePakDirTreeEx.setSelectedPath( filePath( %currentFile ) );
+   else if ( $pref::Constructor::lastPath !$= "" )
+      SavePakDirTreeEx.setSelectedPath( $pref::Constructor::lastPath );
+      
+   // Update our file view to reflect the changes
+   SavePackageListEx.setPath( SavePakDirTreeEx.getSelectedPath(), $SavePackageExFileSpec );
+
+   // Update the file edit control
+   SavePackageExEdit.setText(fileName($SavePackageExFile));
+}
+
+
+//--------------------------------------
+function DoSavePackageExCallback()
+{
+  %path = SavePakDirTreeEx.getSelectedPath();
+  %file = SavePackageExEdit.getValue();
+  %cat = %path @ "/" @ %file;
+  
+  // MEOW
+  echo(%cat);
+    
+  eval( $GuiSaveDialogCallback @ "(\"" @ %cat @"\");" );
+
+  Canvas.popDialog(SavePackageDlgEx);
+}   
+
+function SavePakDirTreeEx::onSelectPath( %this, %path )
+{
+   // Update our file view to reflect the changes
+   SavePackageListEx.setPath( %path, $SavePackageExFileSpec  );
+   
+   $pref::Constructor::lastPath = %path;
+}
+
+function SavePackageListEx::onSelect( %this, %listid, %file )
+{
+   // Update our file name to the one selected
+   SavePackageExEdit.setText( %file );
+}
+
+// Called from WorldEditor system
+function EditorSavePackageAs()
+{
+   getSavePackagename("*.pak", "EditorDoSavePackage", ".pak");
+}
+
+//////////////////////////////
+// NOTE # 1
+//////////////////////////////
+//------------------------------------------------------------------------------
+// This is the actual save function, the meat of this resource
+// - MP
+//------------------------------------------------------------------------------
+function EditorDoSavePackage(%packageName)
+{
+   echo("Saving package: " @ %packageName);
+   
+   // Create a temporary group to hold the specific
+   // environment objects we want to save
+   new simset(enviropackage){
+      cansavedynamicfields = "1";
+   };
+   
+   // If we are saving the sun, add it to the simset
+   if(SaveSunCB.getvalue())
+      enviropackage.add(missiongroup.getobjects("Sun"));
+   
+   // If we are saving the sky, add it to the simset
+   if(SaveSkyCB.getvalue())
+      enviropackage.add(missiongroup.getobjects("Sky"));
+      
+   // Add precipitation data
+   if(SavePrecipCB.getValue())
+   {
+      // First, find all precipitation objects using the
+      // new simset consoleMethod ("getObjects") and
+      // store that data in a list
+      %rains = missiongroup.getobjects("Precipitation");
+      
+      // Get the number of objects we found
+      %count = getwordcount(%rains);  
+      
+      // Iterate through the list of objects
+      for(%i = 0; %i < %count; %i++)
+      {
+         // Get the id of the object
+         %id = getword(%rains, %i);
+         
+         // Add the object to our simset
+         enviropackage.add(%id);
+      }
+   }
+   
+   // Add forest data
+   if(SaveForestCB.getvalue())
+   {
+      %forest = missiongroup.getobjects("Forest");
+      %count = getwordcount(%forest);  
+      
+      for(%i = 0; %i < %count; %i++)
+      {
+         %id = getword(%forest, %i);
+         enviropackage.add(%id);
+      }
+   }
+   
+   // Add foliage replicators
+   if(SaveFoliageCB.getvalue())
+   {
+      %foliage = missiongroup.getobjects("fxFoliageReplicator");
+      %count = getwordcount(%foliage);  
+      
+      for(%i = 0; %i < %count; %i++)
+      {
+         %id = getword(%foliage, %i);
+         enviropackage.add(%id);
+      }
+   }
+   
+   // Add the shape replicators
+   if(SaveShapesCB.getvalue())
+   {
+      %shapes = missiongroup.getobjects("fxShapeReplicator");
+      %count = getwordcount(%shapes);  
+      
+      for(%i = 0; %i < %count; %i++)
+      {
+         %id = getword(%shapes, %i);
+         enviropackage.add(%id);
+      }
+   }
+   
+   // Add audio emitters
+   if(SaveAudiosCB.getvalue())
+   {
+      %emitters = missiongroup.getobjects("AudioEmitter");
+      %count = getwordcount(%emitters);  
+      
+      for(%i = 0; %i < %count; %i++)
+      {
+         %id = getword(%emitters, %i);
+         enviropackage.add(%id);
+      }
+   }
+
+   // Call simset::save("filename") to create the package file
+   enviropackage.save(%packagename);
+   
+   // Clear out the simset to remove duplicate entries in current mission
+   enviropackage.clear();
+   
+   // Delete the empty simset
+   enviropackage.delete();
+}
